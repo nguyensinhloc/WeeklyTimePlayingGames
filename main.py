@@ -1,30 +1,22 @@
-# Import necessary libraries
-import matplotlib.pyplot as plt
 import pandas as pd
 
-# Read the csv file into a dataframe
-df = pd.read_csv("WeeklyTimePlayingGames.csv")
+# Read the CSV file
+df = pd.read_csv('WeeklyTimePlayingGames.csv')
 
-# Print some basic statistics of the dataframe
-print(df.describe())
+# Handle missing values (replace NaN with mean for numeric columns)
+df.fillna(df.mean(), inplace=True)
 
-# Group the dataframe by country and calculate the mean weekly hours
-country_hours = df.groupby("country")["weekly_hours"].mean()
+# Remove unnecessary columns (if any)
+columns_to_keep = ['player_id', 'first_name', 'last_name', 'age', 'email', 'country', 'gender', 'favorite_game', 'weekly_hours']
+df_cleaned = df[columns_to_keep]
 
-# Plot a bar chart of the mean weekly hours by country
-country_hours.plot(kind="bar", title="Mean Weekly Hours by Country", xlabel="Country", ylabel="Hours")
-plt.show()
+# Rename columns
+new_column_names = {'player_id': 'Player ID', 'first_name': 'First Name', 'last_name': 'Last Name',
+                    'age': 'Age', 'email': 'Email', 'country': 'Country',
+                    'gender': 'Gender', 'favorite_game': 'Favorite Game', 'weekly_hours': 'Weekly Hours'}
+df_cleaned.rename(columns=new_column_names, inplace=True)
 
-# Group the dataframe by gender and calculate the percentage of gamers
-gender_count = df.groupby("gender")["percentage_of_gamers"].sum()
+# Save the cleaned DataFrame to a new CSV file
+df_cleaned.to_csv('Cleaned_WeeklyTimePlayingGames.csv', index=False)
 
-# Plot a pie chart of the percentage of gamers by gender
-gender_count.plot(kind="pie", title="Percentage of Gamers by Gender", autopct="%1.1f%%")
-plt.show()
-
-# Group the dataframe by favorite game and calculate the count of gamers
-game_count = df.groupby("favorite_game")["percentage_of_gamers"].count()
-
-# Plot a horizontal bar chart of the count of gamers by favorite game
-game_count.plot(kind="bar", title="Count of Gamers by Favorite Game", xlabel="Count", ylabel="Game")
-plt.show()
+print("CSV file cleaned and saved as Cleaned_WeeklyTimePlayingGames.csv")
