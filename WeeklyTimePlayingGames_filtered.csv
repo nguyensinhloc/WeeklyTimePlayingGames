@@ -1,4 +1,4 @@
-player_id,first_name,last_name,age,email,country,gender,Games,weekly_hours
+player_id,first_name,last_name,age,email,country,gender,games,weekly_hours
 3,Chelsy,Portsmouth,41,cportsmouth2@dropbox.com,Indonesia,Female,Grand Theft Auto V,78.23
 5,Charita,Tzar,38,ctzar4@infoseek.co.jp,Mexico,Female,FIFA 20,1.37
 6,Matilde,Grisewood,22,mgrisewood5@census.gov,Armenia,Female,Red Dead Redemption 2,49.68
