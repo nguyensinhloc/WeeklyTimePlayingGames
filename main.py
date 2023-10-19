@@ -37,12 +37,8 @@ plt.show()
 # Calculate the mean of the age column
 avg_age = df["age"].mean()
 
-# Plot a horizontal bar chart with the average age
-plt.figure(figsize=(8, 4))
-plt.barh("Average age", avg_age, color="green")
-plt.xlabel("Age (years)")
-plt.title("Average age of the gamers")
-plt.show()
+# Print the average age
+print(f"The average age of the gamers is {avg_age:.2f} years.")
 
 # Question 2: Is there any gender predominance in the playing Minecraft, Super Mario Odyssey and The Legend of Zelda: Breath of the Wild?
 # Filter the dataframe by the games column and group by the gender column
@@ -92,12 +88,8 @@ plt.show()
 # Filter the dataframe by the games column and calculate the mean of the weekly_hours column
 avg_gta = df[df["games"] == "Grand Theft Auto V"]["weekly_hours"].mean()
 
-# Plot a horizontal bar chart with the average weekly hours for Grand Theft Auto V
-plt.figure(figsize=(8, 4))
-plt.barh("Grand Theft Auto V", avg_gta, color="red")
-plt.xlabel("Weekly hours")
-plt.title("Average weekly time spent playing Grand Theft Auto V")
-plt.show()
+# Print the average weekly hours for Grand Theft Auto V
+print(f"The average weekly time spent playing Grand Theft Auto V is {avg_gta:.2f} hours.")
 
 # Question 7: Which game do gamers from the Philippines play most frequently?
 # Filter the dataframe by the country column and group by the games column
@@ -124,12 +116,8 @@ plt.show()
 # Filter the dataframe by the email column and count the number of players
 df_com = df[df["email"].str.endswith(".com")]["player_id"].count()
 
-# Plot a horizontal bar chart with the count of .com email addresses
-plt.figure(figsize=(8, 4))
-plt.barh(".com email addresses", df_com, color="orange")
-plt.xlabel("Count")
-plt.title("Number of gamers with .com email addresses")
-plt.show()
+# Print the count of .com email addresses
+print("Number of gamers with .com email addresses:", df_com)
 
 # Question 10: Are there any correlations between the age of gamers and the weekly time they spend playing games?
 # Plot a scatter plot with the age and weekly_hours columns
