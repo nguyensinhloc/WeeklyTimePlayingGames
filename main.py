@@ -127,3 +127,16 @@ plt.xlabel("Age (years)")
 plt.ylabel("Weekly hours")
 plt.title("Correlation between age and weekly time spent playing games")
 plt.show()
+
+# Bonus question: How does Fortnite's popularity among female gamers compare to its popularity among male gamers?
+# Filter the rows where games column contains Fortnite
+df = df[df["games"].str.contains("Fortnite")]
+
+# Group the data by gender and calculate the mean weekly hours
+df = df.groupby("gender")["weekly_hours"].mean()
+
+# Plot a bar chart with gender as x-axis and mean weekly hours as y-axis
+df.plot(kind="bar", x="gender", y="weekly_hours", title="Average weekly hours of playing Fortnite by gender")
+plt.xlabel("Gender")
+plt.ylabel("Weekly hours")
+plt.show()
